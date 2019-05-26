@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Shopping Site for all kind of products</title>
+	<style type="text/css">
+		#css_box{
+			
+            width: 1200px;  
+			background-color: blue;
+		/*	text-align: center;*/
+			font-size: 2em;
+            
+			color: white;
+		}
+
+	</style>
+</head>
+<BODY>
+<ul id = "mobile"></ul>
+      <!-- <ul id="Mobile"></ul> -->
+<script type="text/javascript">	
+  window.onload = function() {myFunction()};
+  document.getElementById('mobile').onmouseover() = function() {myfunction_new()}
+
+ function myFunction() {
+
+ 	var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // document.getElementById("Mobile").innerHTML = this.responseText;
+     console.log(xhttp.responseText);
+     var response = JSON.parse(xhttp.responseText);
+
+     console.log(response.mobile);
+     var mobile_log = response.mobile;
+     /*var mob = response.mobile;*/
+
+       output = '';
+       for (var i = 0; i< mobile_log.length; i++)
+         {
+           output += '<li><a href = "Details.html?id=' +mobile_log[i].id+ '">' +mobile_log[i].name+ '</a></li>';
+           document.getElementById('mobile').innerHTML = output;
+         }  
+    }
+  };
+  xhttp.open("GET", "mobile.jSON", true);
+  xhttp.send();
+ // document.getElementById("Mobile").innerHTML = "YOU CLICKED ME!";
+}
+
+function myFunction_new() {
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // document.getElementById("Mobile").innerHTML = this.responseText;
+     console.log(xhttp.responseText);
+     var response = JSON.parse(xhttp.responseText);
+
+     console.log(response.mobile);
+     var mobile_log = response.mobile;
+     /*var mob = response.mobile;*/
+
+       output = '';
+       for (var i = 0; i< mobile_log.length; i++)
+         {
+           output += '<li>' +mobile_log[i].name+ '</li>';
+           document.getElementById('mobile').innerHTML = output;
+         }  
+    }
+  }
+}
+</script>
+</body>
+</HTML>

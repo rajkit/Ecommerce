@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body onload = myfunction()>
+	<ul id = "mobile"></ul>
+	<script type="text/javascript">
+		function myfunction()
+		 {
+		 	var id = location.search;
+
+		 	var spl = id.split("=") [1]
+
+		 	var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     // document.getElementById("Mobile").innerHTML = this.responseText;
+     console.log(xhttp.responseText);
+     var response = JSON.parse(xhttp.responseText);
+
+     console.log(response.mobile);
+     var mobile_log = response.mobile;
+     /*var mob = response.mobile;*/
+       var  output = '';
+       for (var i = mobile_log.length - 1; i >= 0; i--) {
+       	  if (mobile_log[i].id == spl)
+       	  {
+       	  	    output += '<li><img src = "'  +mobile_log[i].Image+ '"/><li>'
+                output += '<li>' +mobile_log[i].name+ '</li>';
+                output += '<li>' +mobile_log[i].OS+ '</li>';
+                output += '<li>' +mobile_log[i].Model+ '</li>';
+                output += '<li>' +mobile_log[i].Display+ '</li>';
+                output += '<li>' +mobile_log[i].Cost+ '</li>';
+                document.getElementById('mobile').innerHTML = output;
+                break;
+       	  }
+       }
+    }
+  };
+
+   xhttp.open("GET", "mobile.jSON", true);
+  xhttp.send();
+
+		 }
+	</script>
+</body>
+</html>

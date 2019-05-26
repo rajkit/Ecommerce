@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mobile Details</title>
+</head>
+<body>
+	<p>Mobile Details</p>
+	<ul id="mobile">Mobile Details</ul>
+    <script type="text/javascript">
+    	var mobile = {
+    		name: "Redmi note 7 Pro",
+    		OS: "Android Oreo",
+    		Model: "Redmi",
+    		Display: "1280*125"
+    	}
+        
+        mobile = JSON.stringify(mobile)
+        mobile = JSON.parse(mobile);
+        
+        output = ''
+        output += '<li>' +mobile.name+ '</li>';
+        output += '<li>' +mobile.OS+ '</li>';
+        output += '<li>' +mobile.Display+ '</li>';
+        document.getElementById('mobile').innerHTML = output;
+    	//console.log(mobile.name);
+    </script>
+</body>
+</html>
